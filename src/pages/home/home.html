@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+      <div *ngIf="results">
+        <p>{{results.text}}</p>
+        <!--<p>{{results.format}}</p>
+        <p>{{results.cancelled}}</p> -->  
+      </div>
+      <!--<ion-input [(ngModel)] = "saman" type="text"></ion-input>-->
+      <button ion-button full (click)="scanBarcode()">Scan</button>
+      <button ion-button full color="light" (click) = "setData(results.text)">Add to Cart</button>
+      <!--<button ion-button full color="light" (click) = "getData()">Get Data</button>
+      <div > 
+        <ion-item>
+          <p>{{saman}}</p>
+        </ion-item>
+      </div> -->
+      <!--<button ion-button full (click)="encodeData()">Encode</button>-->
+      <button ion-button full color="light" (click)="openCartPage()">View Cart</button>
+</ion-content>
