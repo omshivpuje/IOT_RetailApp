@@ -1,13 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
@@ -16,16 +10,45 @@ import { LoginPage } from '../login/login';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  @ViewChild('name') name;
+  @ViewChild('surname') surname;
+  @ViewChild('email') email;
+  @ViewChild('password') password;
+  @ViewChild('contact') contact;
+  @ViewChild('address') address;
+  
+  constructor(private fire: AngularFireAuth, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
+  alert(message: string) {
+    this.alertCtrl.create({
+    title: 'Info!',
+    subTitle:message,
+    buttons: ['OK']
+  }).present();
+}
+
   register(){
-    console.log("Registered New user!");
-    this.navCtrl.push(LoginPage); 
+    console.log("Registered New user!",this.name.value,this.surname.value,this.email.value,this.password.value,this.contact.value,this.address.value);
+    this.fire.auth.createUserWithEmailAndPassword(this.email.value,this.password.value)
+    .then(data=>{
+      console.log('Got data', data);
+      this.alert('Registered Successfully!');
+    }).catch(error=>{
+      console.log('Got an Error',error);  
+      this.alert(error.message);
+    });
+    this.navCtrl.push(LoginPage);
     
+    this.name.value = " ",
+    this.surname.value = " ",
+    this.email.value =" ",
+    this.password.value = " ",
+    this.contact.value = " " ,
+    this.address.value = " "
   }
 }

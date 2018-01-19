@@ -47,5 +47,6 @@ export class HomePage {
   
   openCartPage(){
     this.navCtrl.push(CartPage); 
+    this.results = " ";
   }
 }
