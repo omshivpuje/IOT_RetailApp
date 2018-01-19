@@ -46,15 +46,15 @@ export class CartPage {
     });
   }
 
-  delete(product){
+  delete(product,slidingItem){
  
     //Remove locally
       let index = this.saman.indexOf(product);
- 
-      if(index > -1){
+       if(index > -1){
         this.saman.splice(index, 1);
-      }  
- 
+      }
+      this.storage.set('item',this.saman);  
+      slidingItem.close();
     //Remove from database
     // this.reviewService.deleteReview(product._id);
   }

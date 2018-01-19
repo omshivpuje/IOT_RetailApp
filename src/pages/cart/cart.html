@@ -24,10 +24,10 @@
       </ion-refresher>
 
    <ion-list>
-      <ion-item-sliding (ionSwipe)="delete(item)" *ngFor = "let item of saman">
+      <ion-item-sliding #slidingItem (ionSwipe)="delete(item)" *ngFor = "let item of saman">
           <ion-item>{{item}}</ion-item>
           <ion-item-options>
-            <button ion-button expandable (click)="delete(item)">Delete</button>
+            <button ion-button expandable (click)="delete(item,slidingItem)">Delete</button>
           </ion-item-options>
         </ion-item-sliding>
     
