@@ -7,6 +7,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { IonicStorageModule } from '@ionic/storage';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -14,6 +15,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { CartPage } from '../pages/cart/cart';
 import { RegistrationProvider } from '../providers/registration/registration';
+import { DataProvider } from '../providers/data/data';
 
 const firebaseAuth = {
   apiKey: "AIzaSyBHLRwFNRduFd18w1966HBGe1Iu-pG5VZg",
@@ -34,6 +36,7 @@ const firebaseAuth = {
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseAuth),
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
@@ -54,8 +57,10 @@ const firebaseAuth = {
     StatusBar,
     SplashScreen,
     BarcodeScanner,
+    HttpModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RegistrationProvider
+    RegistrationProvider,
+    DataProvider
   ]
 })
 export class AppModule {}

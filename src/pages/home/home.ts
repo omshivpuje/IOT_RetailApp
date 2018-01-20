@@ -36,6 +36,7 @@ export class HomePage {
       val.push(entry);
       this.storage.set('item',val);
       });
+      this.results = "";
     }
 
   // getData(){
@@ -47,6 +48,6 @@ export class HomePage {
   
   openCartPage(){
     this.navCtrl.push(CartPage); 
-    this.results = " ";
+    this.results = "";
   }
 }

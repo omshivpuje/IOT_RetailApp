@@ -10,25 +10,25 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-        <ion-input type="text" placeholder="Name" #name></ion-input>
+        <ion-input [(ngModel)]= "name" type="text" placeholder="Name"></ion-input>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
         <ion-input type="text" placeholder="Surname" #surname></ion-input>
+    </ion-item> -->
+    <ion-item>
+        <ion-input [(ngModel)] = "email" type="email" placeholder="Email"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-input type="email" placeholder="Email" #email></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="password" placeholder="password" #password></ion-input>
+      <ion-input [(ngModel)] = "password" type="password" placeholder="password"></ion-input>
   </ion-item>
     <ion-item>
-        <ion-input type="number" placeholder="Contact" #contact></ion-input>
+        <ion-input [(ngModel)] = "phone" type="number" placeholder="Contact"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-input type="text" placeholder="Address" #address></ion-input>
+        <ion-input [(ngModel)] = "address" type="text" placeholder="Address"></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button full (click)="register()">Register</button>
+  <button ion-button full (click)="addUser()">Register</button>
 
 
 </ion-content>

@@ -14,8 +14,8 @@
         <p>{{results.cancelled}}</p> -->  
       </div>
       <!-- <ion-input [(ngModel)] = "saman" type="text"></ion-input> -->
-      <button ion-button full (click)="scanBarcode()">Scan</button>
-      <button ion-button full color="light" (click) = "setData(results.text)">Add to Cart</button>
+      <button ion-button full *ngIf="!results" (click)="scanBarcode()">Scan</button>
+      <button ion-button full *ngIf="results" color="light" (click) = "setData(results.text)">Add to Cart</button>
       <!--<button ion-button full color="light" (click) = "getData()">Get Data</button>
       <div > 
         <ion-item>
