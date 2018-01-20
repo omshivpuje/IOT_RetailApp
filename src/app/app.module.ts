@@ -17,14 +17,14 @@ import { CartPage } from '../pages/cart/cart';
 import { RegistrationProvider } from '../providers/registration/registration';
 import { DataProvider } from '../providers/data/data';
 
-const firebaseAuth = {
-  apiKey: "AIzaSyBHLRwFNRduFd18w1966HBGe1Iu-pG5VZg",
-  authDomain: "userdata-13987.firebaseapp.com",
-  databaseURL: "https://userdata-13987.firebaseio.com",
-  projectId: "userdata-13987",
-  storageBucket: "userdata-13987.appspot.com",
-  messagingSenderId: "1058839393159"
-};
+/*const firebaseAuth = {
+  apiKey: "YourApiKey",
+  authDomain: "Domain",
+  databaseURL: "DatabaseURL",
+  projectId: "ProjectID",
+  storageBucket: "StorageBucket",
+  messagingSenderId: "ID"
+};*/
 
 @NgModule({
   declarations: [
