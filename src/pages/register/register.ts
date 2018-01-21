@@ -33,14 +33,6 @@ export class RegisterPage {
     console.log('ionViewDidLoad RegisterPage');
   }
 
-  alert(message: string) {
-    this.alertCtrl.create({
-      title: 'Info!',
-      subTitle: message,
-      buttons: ['OK']
-    }).present();
-  }
-
   // register(){
   //   console.log("Registered New user!",this.name.value,this.surname.value,this.email.value,this.password.value,this.contact.value,this.address.value);
   //   this.fire.auth.createUserWithEmailAndPassword(this.email.value,this.password.value)

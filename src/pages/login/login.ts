@@ -74,4 +74,5 @@ export class LoginPage {
   openRegisterPage() {
     this.navCtrl.push(RegisterPage);
   }
+  
 }

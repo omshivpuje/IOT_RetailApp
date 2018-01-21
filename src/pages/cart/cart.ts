@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
+import { DataProvider } from '../../providers/data/data';
 /**
  * Generated class for the CartPage page.
  *
@@ -18,7 +18,7 @@ export class CartPage {
 
   saman : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public modalCtrl: ModalController) {
+  constructor(public dataProvider: DataProvider,public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public modalCtrl: ModalController) {
   }
 
   ngOnInit() {
@@ -42,10 +42,11 @@ export class CartPage {
 
     this.storage.get('item').then((val) => {
       console.log('Your item is', val);
+      
       this.saman = val;
     });
   }
-
+  
   delete(product,slidingItem){
  
     //Remove locally
@@ -58,5 +59,5 @@ export class CartPage {
     //Remove from database
     // this.reviewService.deleteReview(product._id);
   }
- 
 }
+

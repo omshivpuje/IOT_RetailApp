@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams} from 'ionic-angular';
+import { NavController, NavParams, MenuController, AlertController} from 'ionic-angular';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
 import { Storage } from '@ionic/storage';
 import { CartPage } from '../cart/cart';
@@ -12,12 +12,24 @@ export class HomePage {
 
   options: BarcodeScannerOptions;
   results: {};
-  // saman : any;
+  saman : {};
 
-  constructor(private storage: Storage, public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner) {
+  constructor(public alertCtrl: AlertController,public menuCtrl: MenuController, private storage: Storage, public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner) {
     this.storage.set('item',[]);
   }
 
+  openMenu() {
+    this.menuCtrl.open();
+  }
+
+  closeMenu() {
+    this.menuCtrl.close();
+  }
+
+  getItem(){
+
+  }
+  
   async scanBarcode(){
     this.options={
       prompt: 'scan a barcode to see the results!!'
@@ -31,13 +43,37 @@ export class HomePage {
   }
 
   setData(entry){
-    this.storage.get('item').then((val) => {
-      console.log('Your item is', val);  
-      val.push(entry);
-      this.storage.set('item',val);
+    
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Do you want to buy this item?',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Buy',
+            handler: () => {
+              console.log('Buy clicked');
+              this.storage.get('item').then((val) => {
+                console.log('Your item is', val);
+                val.push(entry);
+                this.storage.set('item',val);
+              });
+            }
+          }
+        ]
       });
+      alert.present(); 
+        
       this.results = "";
     }
+
+   
 
   // getData(){
   //   this.storage.get('item').then((val) => {

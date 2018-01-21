@@ -5,8 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { IonicStorageModule } from '@ionic/storage';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+// import { AngularFireModule } from 'angularfire2';
+// import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
@@ -16,6 +16,7 @@ import { RegisterPage } from '../pages/register/register';
 import { CartPage } from '../pages/cart/cart';
 import { RegistrationProvider } from '../providers/registration/registration';
 import { DataProvider } from '../providers/data/data';
+
 
 /*const firebaseAuth = {
   apiKey: "YourApiKey",
@@ -38,8 +39,8 @@ import { DataProvider } from '../providers/data/data';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseAuth),
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    // AngularFireModule.initializeApp(firebaseAuth),
+    // AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     IonicStorageModule.forRoot({
       name: '__mydb',
          driverOrder: ['indexeddb', 'sqlite', 'websql']

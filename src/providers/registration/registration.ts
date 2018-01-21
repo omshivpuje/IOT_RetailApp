@@ -19,7 +19,7 @@ export class RegistrationProvider {
   addUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let ep = 'http://192.168.1.86:1888/user/register';
+    let ep = 'http://192.168.0.116:1888/user/register';
     return this.http.post(ep, user, { headers: headers })
       .map(res => res.json());
   }
@@ -27,7 +27,7 @@ export class RegistrationProvider {
   login(username){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let ep = 'http://192.168.1.86:1888/user/login';
+    let ep = 'http://192.168.0.116:1888/user/login';
     return this.http.post(ep, username, { headers: headers })
       .map(res => res.json());
   }
