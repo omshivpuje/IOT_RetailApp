@@ -1,7 +1,7 @@
-
 <ion-header>
   <ion-navbar>
-    <ion-title style="text-align: center;"><ion-icon name="home"></ion-icon>
+    <ion-title style="text-align: center;">
+      <ion-icon name="home"></ion-icon>
       Home</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="openCartPage()">
@@ -12,25 +12,44 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-searchbar (ionInput)="getItems()"></ion-searchbar>
   <div *ngIf="results">
-      <ion-card>
-        <ion-card-content>
-          <p>{{results.text}}</p>
-          <!--<p>{{results.format}}</p>
+    <ion-card>
+      <ion-card-content>
+        <p>{{results.text}}</p>
+        <!--<p>{{results.format}}</p>
           <p>{{results.cancelled}}</p> -->
-        </ion-card-content>
-      </ion-card>
-    </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
   <!-- <ion-input [(ngModel)]="saman" type="text"></ion-input> -->
   <ion-buttons>
-    <button ion-button full icon-only *ngIf = "!results" color="light"  (click)="scanBarcode()">
-        <ion-icon name="qr-scanner"></ion-icon> Scan 
+    <button ion-button full icon-only *ngIf="!results" color="light" (click)="scanBarcode()">
+      <ion-icon name="qr-scanner"></ion-icon> Scan
     </button>
-    <button ion-button full icon-only *ngIf = "results" color="light" (click)="setData(results.text)">
+    <ion-input [(ngModel)]="quantity" *ngIf="results" type="text" placeholder="Qty."></ion-input>
+    <button ion-button full icon-only *ngIf="results" color="light" (click)="setData(results.text)">
       Add item
     </button>
   </ion-buttons>
+
+  <button ion-item *ngFor="let samans of saman" (click)="showPrompt(samans);">
+    <!-- <ion-icon [name]="samans.icon" item-start></ion-icon> -->
+    {{samans.itemName}}
+    <div class="samans-note" item-end>
+      {{samans.price}} Rs </div>
+  </button>
+
+
+
+  <div *ngIf="selectedItem" padding>
+    You navigated here from
+    <b>{{selectedItem.title}}</b>
+  </div>
   <!--<button ion-button full color="light" (click) = "getData()">Get Data</button>
       <div > 
         <ion-item>

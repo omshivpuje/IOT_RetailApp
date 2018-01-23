@@ -15,8 +15,6 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { CartPage } from '../pages/cart/cart';
 import { RegistrationProvider } from '../providers/registration/registration';
-import { DataProvider } from '../providers/data/data';
-
 
 /*const firebaseAuth = {
   apiKey: "YourApiKey",
@@ -60,8 +58,7 @@ import { DataProvider } from '../providers/data/data';
     BarcodeScanner,
     HttpModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RegistrationProvider,
-    DataProvider
+    RegistrationProvider
   ]
 })
 export class AppModule {}
